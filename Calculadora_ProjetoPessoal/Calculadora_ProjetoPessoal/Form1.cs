@@ -109,12 +109,21 @@ namespace Calculadora_ProjetoPessoal
 			//var tam = numeros.Count();
 			var tam = txtVisor.Text.Length;
 			int resultado = 0;
-			for (int j = 0; j <= tam; j++)
+			int cont_op = 0;
+
+			for (int h = 0; h < tam; h++)
+			{
+				if(txtVisor.Text[h] == '+' || txtVisor.Text[h] == '-' || txtVisor.Text[h] == '*' || txtVisor.Text[h] == '/')
+				{
+					cont_op++;
+				}
+			}
+			for (int j = 0; j < cont_op; j++)
 			{
 				int i = 0;
 				string numero = null;
 				string numero2 = null;
-				
+
 				while(txtVisor.Text[i] != '+' && txtVisor.Text[i] != '-' && txtVisor.Text[i] != '*' && txtVisor.Text[i] != '/')
 				{
 					numero = numero + txtVisor.Text[i];
@@ -151,7 +160,7 @@ namespace Calculadora_ProjetoPessoal
 				}
 				txtVisor.Text = txtVisor.Text.Remove(0, i-1);
 				txtVisor.Text = txtVisor.Text.Insert(0, Convert.ToString(resultado));
-				
+
 				tam = txtVisor.Text.Length;
 			}
 
