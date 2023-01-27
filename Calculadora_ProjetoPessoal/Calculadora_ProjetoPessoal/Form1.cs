@@ -87,6 +87,10 @@ namespace Calculadora_ProjetoPessoal
 		{
 			txtVisor.Text += "/";
 		}
+		private void btn_teclavirgula_Click(object sender, EventArgs e)
+		{
+			txtVisor.Text += ",";
+		}
 		#endregion
 
 		private void btntecla_backspace_Click(object sender, EventArgs e)
@@ -109,7 +113,7 @@ namespace Calculadora_ProjetoPessoal
 			//string[] numeros = txtVisor.Text.Split('+');
 			//var tam = numeros.Count();
 			var tam = txtVisor.Text.Length;
-			int resultado = 0;
+			double resultado = 0;
 			int cont_op = 0;
 
 			for (int h = 0; h < tam; h++)
@@ -141,22 +145,22 @@ namespace Calculadora_ProjetoPessoal
 				}
 				if (txtVisor.Text[posicao] == '+')
 				{
-					resultado = Convert.ToInt32(numero) + Convert.ToInt32(numero2);
+					resultado = Convert.ToDouble(numero) + Convert.ToDouble(numero2);
 					i++;
 				}
 				else if (txtVisor.Text[posicao] == '-')
 				{
-					resultado = Convert.ToInt32(numero) - Convert.ToInt32(numero2);
+					resultado = Convert.ToDouble(numero) - Convert.ToDouble(numero2);
 					i++;
 				}
 				else if (txtVisor.Text[posicao] == '*')
 				{
-					resultado = Convert.ToInt32(numero) * Convert.ToInt32(numero2);
+					resultado = Convert.ToDouble(numero) * Convert.ToDouble(numero2);
 					i++;
 				}
 				else if (txtVisor.Text[posicao] == '/')
 				{
-					resultado = Convert.ToInt32(numero) / Convert.ToInt32(numero2);
+					resultado = Convert.ToDouble(numero) / Convert.ToDouble(numero2);
 					i++;
 				}
 				txtVisor.Text = txtVisor.Text.Remove(0, i-1);
@@ -181,5 +185,7 @@ namespace Calculadora_ProjetoPessoal
 			}
 			txtVisor.Text = Convert.ToString(resultado);*/
 		}
+
+		
 	}
 }

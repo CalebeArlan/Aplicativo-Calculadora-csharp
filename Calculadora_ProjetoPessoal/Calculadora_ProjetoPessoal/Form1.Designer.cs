@@ -47,6 +47,7 @@ namespace Calculadora_ProjetoPessoal
 			this.btntecla_2 = new System.Windows.Forms.Button();
 			this.btntecla_resul = new System.Windows.Forms.Button();
 			this.btntecla_backspace = new System.Windows.Forms.Button();
+			this.btn_teclavirgula = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// txtVisor
@@ -244,6 +245,17 @@ namespace Calculadora_ProjetoPessoal
 			this.btntecla_backspace.UseVisualStyleBackColor = true;
 			this.btntecla_backspace.Click += new System.EventHandler(this.btntecla_backspace_Click);
 			// 
+			// btn_teclavirgula
+			// 
+			this.btn_teclavirgula.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.btn_teclavirgula.Location = new System.Drawing.Point(3, 583);
+			this.btn_teclavirgula.Name = "btn_teclavirgula";
+			this.btn_teclavirgula.Size = new System.Drawing.Size(132, 99);
+			this.btn_teclavirgula.TabIndex = 1;
+			this.btn_teclavirgula.Text = ",";
+			this.btn_teclavirgula.UseVisualStyleBackColor = true;
+			this.btn_teclavirgula.Click += new System.EventHandler(this.btn_teclavirgula_Click);
+			// 
 			// FrmCalculadora
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -258,6 +270,7 @@ namespace Calculadora_ProjetoPessoal
 			this.Controls.Add(this.btntecla_5);
 			this.Controls.Add(this.btntecla_4);
 			this.Controls.Add(this.btntecla_8);
+			this.Controls.Add(this.btn_teclavirgula);
 			this.Controls.Add(this.btntecla_0);
 			this.Controls.Add(this.btntecla_7);
 			this.Controls.Add(this.btntecla_3);
@@ -294,6 +307,7 @@ namespace Calculadora_ProjetoPessoal
 		private System.Windows.Forms.Button btntecla_2;
 		private System.Windows.Forms.Button btntecla_resul;
 		private System.Windows.Forms.Button btntecla_backspace;
+		private System.Windows.Forms.Button btn_teclavirgula;
 	}
 }
 
