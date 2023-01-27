@@ -16,7 +16,7 @@ namespace Calculadora_ProjetoPessoal
 		{
 			InitializeComponent();
 		}
-
+		#region Mostra Caracteres na Tela
 		private void btntecla_0_Click(object sender, EventArgs e)
 		{
 			txtVisor.Text += "0";
@@ -87,6 +87,7 @@ namespace Calculadora_ProjetoPessoal
 		{
 			txtVisor.Text += "/";
 		}
+		#endregion
 
 		private void btntecla_backspace_Click(object sender, EventArgs e)
 		{
