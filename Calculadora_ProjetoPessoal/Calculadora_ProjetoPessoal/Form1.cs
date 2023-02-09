@@ -129,7 +129,14 @@ namespace Calculadora_ProjetoPessoal
 				string numero = null;
 				string numero2 = null;
 
-				while(txtVisor.Text[i] != '+' && txtVisor.Text[i] != '-' && txtVisor.Text[i] != '*' && txtVisor.Text[i] != '/')
+				if(txtVisor.Text[0] == '-')
+				{
+					resultado = resultado - Convert.ToDouble(Convert.ToString(txtVisor.Text[1]));
+					txtVisor.Text = txtVisor.Text.Remove(0,1);
+					tam = txtVisor.Text.Length;
+				}
+
+				while (txtVisor.Text[i] != '+' && txtVisor.Text[i] != '-' && txtVisor.Text[i] != '*' && txtVisor.Text[i] != '/')
 				{
 					numero = numero + txtVisor.Text[i];
 					i++;
