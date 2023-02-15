@@ -128,12 +128,13 @@ namespace Calculadora_ProjetoPessoal
 				int i = 0;
 				string numero = null;
 				string numero2 = null;
-
-				if(txtVisor.Text[0] == '-')
+				bool negativo = false;
+				if(txtVisor.Text[0] == '-') //Verifica se o primeiro caracter é negativo
 				{
-					resultado = resultado - Convert.ToDouble(Convert.ToString(txtVisor.Text[1]));
+					negativo = true;
 					txtVisor.Text = txtVisor.Text.Remove(0,1);
 					tam = txtVisor.Text.Length;
+					cont_op--;
 				}
 
 				while (txtVisor.Text[i] != '+' && txtVisor.Text[i] != '-' && txtVisor.Text[i] != '*' && txtVisor.Text[i] != '/')
@@ -153,6 +154,8 @@ namespace Calculadora_ProjetoPessoal
 				if (txtVisor.Text[posicao] == '+')
 				{
 					resultado = Convert.ToDouble(numero) + Convert.ToDouble(numero2);
+					if(negativo == true){ resultado = Convert.ToDouble(numero) - Convert.ToDouble(numero2); }
+					
 					i++;
 				}
 				else if (txtVisor.Text[posicao] == '-')
