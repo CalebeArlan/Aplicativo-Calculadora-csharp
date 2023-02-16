@@ -20,7 +20,7 @@ namespace Calculadora_ProjetoPessoal
 		private void btntecla_0_Click(object sender, EventArgs e)
 		{
 			txtVisor.Text += "0";
-				
+
 		}
 
 		private void btntecla_1_Click(object sender, EventArgs e)
@@ -98,9 +98,9 @@ namespace Calculadora_ProjetoPessoal
 			if (txtVisor.Text != "")
 			{
 				int tam = txtVisor.Text.Length;
-				txtVisor.Text = txtVisor.Text.Remove(tam -1);
+				txtVisor.Text = txtVisor.Text.Remove(tam - 1);
 			}
-			
+
 		}
 
 		private void btntecla_limpar_Click(object sender, EventArgs e)
@@ -118,7 +118,7 @@ namespace Calculadora_ProjetoPessoal
 
 			for (int h = 0; h < tam; h++)
 			{
-				if(txtVisor.Text[h] == '+' || txtVisor.Text[h] == '-' || txtVisor.Text[h] == '*' || txtVisor.Text[h] == '/')
+				if (txtVisor.Text[h] == '+' || txtVisor.Text[h] == '-' || txtVisor.Text[h] == '*' || txtVisor.Text[h] == '/')
 				{
 					cont_op++;
 				}
@@ -129,10 +129,10 @@ namespace Calculadora_ProjetoPessoal
 				string numero = null;
 				string numero2 = null;
 				bool negativo = false;
-				if(txtVisor.Text[0] == '-') //Verifica se o primeiro caracter é negativo
+				if (txtVisor.Text[0] == '-') //Verifica se o primeiro caracter é negativo
 				{
 					negativo = true;
-					txtVisor.Text = txtVisor.Text.Remove(0,1);
+					txtVisor.Text = txtVisor.Text.Remove(0, 1);
 					tam = txtVisor.Text.Length;
 					cont_op--;
 				}
@@ -146,56 +146,79 @@ namespace Calculadora_ProjetoPessoal
 				posicao = i;
 
 				i++;
-				while ( i<tam && txtVisor.Text[i] != '+' && txtVisor.Text[i] != '-' && txtVisor.Text[i] != '*' && txtVisor.Text[i] != '/' && txtVisor.Text != null)
+				while (i < tam && txtVisor.Text[i] != '+' && txtVisor.Text[i] != '-' && txtVisor.Text[i] != '*' && txtVisor.Text[i] != '/' && txtVisor.Text != null)
 				{
 					numero2 = numero2 + txtVisor.Text[i];
 					i++;
 				}
 				if (txtVisor.Text[posicao] == '+')
 				{
-					resultado = Convert.ToDouble(numero) + Convert.ToDouble(numero2);
-					if(negativo == true){ resultado = Convert.ToDouble(numero) - Convert.ToDouble(numero2); }
-					
-					i++;
+					if (negativo == true)
+					{
+						resultado = Convert.ToDouble(numero) - Convert.ToDouble(numero2); //CASO NEGATIVO
+						i++;
+					}
+					else
+					{
+						resultado = Convert.ToDouble(numero) + Convert.ToDouble(numero2);
+					}
 				}
+
 				else if (txtVisor.Text[posicao] == '-')
 				{
-					resultado = Convert.ToDouble(numero) - Convert.ToDouble(numero2);
+					
+					if (negativo == true) { resultado = Convert.ToDouble(numero) + Convert.ToDouble(numero2); }  //CASO NEGATIVO
+					else
+					{
+						resultado = Convert.ToDouble(numero) - Convert.ToDouble(numero2);
+					}
+
 					i++;
 				}
 				else if (txtVisor.Text[posicao] == '*')
 				{
+
 					resultado = Convert.ToDouble(numero) * Convert.ToDouble(numero2);
+
+					if (negativo == true) { resultado = resultado *(-1); txtVisor.Text.Insert(0, "-"); }  //CASO NEGATIVO
 					i++;
+
 				}
 				else if (txtVisor.Text[posicao] == '/')
 				{
 					resultado = Convert.ToDouble(numero) / Convert.ToDouble(numero2);
+
+					if (negativo == true) { resultado = resultado * (-1); txtVisor.Text.Insert(0, "-"); }  //CASO NEGATIVO
 					i++;
 				}
+			
 				txtVisor.Text = txtVisor.Text.Remove(0, i-1);
 				txtVisor.Text = txtVisor.Text.Insert(0, Convert.ToString(resultado));
 
 				tam = txtVisor.Text.Length;
 			}
-
-			/*int resultado = 0;
-			for (int i = 0; i < tam; i++)
-			{
-				 resultado = Convert.ToInt32(numeros[i]) + resultado;
-				
-			}
-
-			for (int i = 0; i < tam; i++)
-			{
-				if(txtVisor.Text[i] == '-')
-				{
-					int subtracao = Convert.ToInt32(txtVisor.Text[i - 1]) - Convert.ToInt32(txtVisor.Text[i + 1]);				
-				}
-			}
-			txtVisor.Text = Convert.ToString(resultado);*/
 		}
 
-		
+
+
+		/*int resultado = 0;
+		for (int i = 0; i < tam; i++)
+		{
+			 resultado = Convert.ToInt32(numeros[i]) + resultado;
+
+		}
+
+		for (int i = 0; i < tam; i++)
+		{
+			if(txtVisor.Text[i] == '-')
+			{
+				int subtracao = Convert.ToInt32(txtVisor.Text[i - 1]) - Convert.ToInt32(txtVisor.Text[i + 1]);				
+			}
+		}
+		txtVisor.Text = Convert.ToString(resultado);*/
 	}
+
+
 }
+
+
