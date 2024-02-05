@@ -110,8 +110,22 @@ namespace Calculadora_ProjetoPessoal
 
 		private void btntecla_resul_Click(object sender, EventArgs e)
 		{
+			Calcular();
+		}
+
+		private void FrmCalculadora_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				Calcular();
+			}
+		}
+
+		private void Calcular()
+		{
 			//string[] numeros = txtVisor.Text.Split('+');
 			//var tam = numeros.Count();
+			lblCalculo.Text = "Calculo: " + txtVisor.Text;
 			var tam = txtVisor.Text.Length;
 			double resultado = 0;
 			int cont_op = 0;
@@ -161,12 +175,13 @@ namespace Calculadora_ProjetoPessoal
 					else
 					{
 						resultado = Convert.ToDouble(numero) + Convert.ToDouble(numero2);
+						i++;
 					}
 				}
 
 				else if (txtVisor.Text[posicao] == '-')
 				{
-					
+
 					if (negativo == true) { resultado = Convert.ToDouble(numero) + Convert.ToDouble(numero2); }  //CASO NEGATIVO
 					else
 					{
@@ -180,7 +195,7 @@ namespace Calculadora_ProjetoPessoal
 
 					resultado = Convert.ToDouble(numero) * Convert.ToDouble(numero2);
 
-					if (negativo == true) { resultado = resultado *(-1); txtVisor.Text.Insert(0, "-"); }  //CASO NEGATIVO
+					if (negativo == true) { resultado = resultado * (-1); txtVisor.Text.Insert(0, "-"); }  //CASO NEGATIVO
 					i++;
 
 				}
@@ -191,34 +206,32 @@ namespace Calculadora_ProjetoPessoal
 					if (negativo == true) { resultado = resultado * (-1); txtVisor.Text.Insert(0, "-"); }  //CASO NEGATIVO
 					i++;
 				}
-			
-				txtVisor.Text = txtVisor.Text.Remove(0, i-1);
+
+				txtVisor.Text = txtVisor.Text.Remove(0, i - 1);
 				txtVisor.Text = txtVisor.Text.Insert(0, Convert.ToString(resultado));
 
 				tam = txtVisor.Text.Length;
 			}
-		}
 
-
-
-		/*int resultado = 0;
-		for (int i = 0; i < tam; i++)
-		{
-			 resultado = Convert.ToInt32(numeros[i]) + resultado;
-
-		}
-
-		for (int i = 0; i < tam; i++)
-		{
-			if(txtVisor.Text[i] == '-')
+			/*int resultado = 0;
+			for (int i = 0; i < tam; i++)
 			{
-				int subtracao = Convert.ToInt32(txtVisor.Text[i - 1]) - Convert.ToInt32(txtVisor.Text[i + 1]);				
+				 resultado = Convert.ToInt32(numeros[i]) + resultado;
+
 			}
+
+			for (int i = 0; i < tam; i++)
+			{
+				if(txtVisor.Text[i] == '-')
+				{
+					int subtracao = Convert.ToInt32(txtVisor.Text[i - 1]) - Convert.ToInt32(txtVisor.Text[i + 1]);				
+				}
+			}
+			txtVisor.Text = Convert.ToString(resultado);*/
 		}
-		txtVisor.Text = Convert.ToString(resultado);*/
+
+
 	}
-
-
 }
 
 
